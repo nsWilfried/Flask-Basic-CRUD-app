@@ -1,0 +1,36 @@
+
+{% extends 'navbar.html' %}
+ {% block content %}
+    <!--card-->
+    <section class="demo">
+     <div style="width:100%; display: flex; justify-content:center; flex-wrap: wrap; ">
+          {% for d in data %}
+         <div class="card" >
+             <div class="card" style="width: 18rem;">
+              <img src="{{d.poster}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{d.name}}</h5>
+                <p class="card-text">{{d.description}}</p>
+
+
+                  <section style="display: flex; justify-content: space-around;s">
+                      <button type="submit"  class="btn btn-primary">
+                       <a class="text-white" href="{{url_for('update', id=d.id)}}">Modifier</a>
+                     </button>
+
+
+                      <form method="POST" action="{{ url_for('remove_film', id=d.id) }}">
+                          <button type="submit" class="btn btn-danger">Supprimer</button>
+                      </form>
+                  </section>
+
+              </div>
+
+            </div>
+
+
+         </div>
+         {% endfor %}
+     </div>
+    </section>
+ {% endblock %}

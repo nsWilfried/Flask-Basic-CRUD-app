@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<section  style="width: 80%;display:flex; justify-content: center; ">
+
+    <form  action="{{url_for('update', id=film.id)}}" method="POST">
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input type="text" class="form-control" id="name" name="filmName" value="{{film.name}}" placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" name='filmDescription'  id="description" rows="3" required>
+            {{film.description}}
+          </textarea>
+        </div>
+        <div class="form-group">
+            <label for="poster">Poster</label>
+            <input type="text" class="form-control" id="poster" name="filmPoster" value="{{film.poster}}" placeholder="Enter Poster" required>
+          </div>
+       
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </form>
+</section>
+{% endblock %}
+
